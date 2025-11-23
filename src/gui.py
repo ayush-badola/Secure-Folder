@@ -87,6 +87,7 @@ class SecureGUI:
             self.mount_entry.delete(0, "end")
             self.mount_entry.insert(0, folder)
             self.setup_directories()
+            self.mount_info_label.configure(text=f"Place files in:\n{self.mount_path}")
 
     def select_store_folder(self):
         folder = filedialog.askdirectory(title="Select folder for encrypted files storage")
@@ -253,8 +254,22 @@ class SecureGUI:
         except Exception as e: messagebox.showerror("Error", f"Failed to initialize: {e}")
 
     def start_file_monitor(self):
-        try: self.file_monitor = FileMonitor(self.mount_path, self.store_path, self.enc, lambda x: None)
-        except Exception as e: messagebox.showerror("Monitor Error", f"Failed to start file monitor: {e}")
+        try: 
+            self.file_monitor = FileMonitor(self.mount_path, self.store_path, self.enc, self.update_status)
+            self.file_monitor.start()  # Add this line to actually start the monitor
+        except Exception as e: 
+            messagebox.showerror("Monitor Error", f"Failed to start file monitor: {e}")
+
+    def update_status(self, status):
+        """Update the status indicator with monitor status"""
+        if status == "Running":
+            self.status_indicator.configure(text="● Monitoring", text_color="#0b846b")
+        elif status == "Stopped":
+            self.status_indicator.configure(text="● Stopped", text_color="#666666")
+        elif status.startswith("Failed"):
+            self.status_indicator.configure(text="● Error", text_color="#e11d48")
+        # Update the status text in real-time
+        print(f"Monitor status: {status}")
 
     def on_closing(self):
         if self.file_monitor:

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Adaptive Folder Encryption & Security System
-Main entry point with enhanced error handling and dependency checking
+Secure Folder - Adaptive Encryption System
+Main entry point with enhanced error handling
 """
 
 import sys
@@ -47,7 +47,7 @@ def install_dependencies(missing_packages):
 def main():
     """Main application entry point"""
     print("=" * 60)
-    print("Adaptive Folder Encryption & Security System")
+    print("Secure Folder - Adaptive Encryption System")
     print("=" * 60)
     
     # Check dependencies
@@ -72,7 +72,7 @@ def main():
     # Import and run the application
     try:
         print("\nStarting application...")
-        from src.gui import SecureGUI
+        from src.gui import SecureGUI  # Updated import
         app = SecureGUI()
     except Exception as e:
         print(f"Error starting application: {e}")
