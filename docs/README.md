@@ -14,7 +14,7 @@ A powerful, intelligent file encryption system that automatically adjusts securi
 
 ### For End Users (No Installation Required)
 
-1. Download the latest release from the [Releases page](https://github.com/yourusername/AdaptiveFolderEncryption/releases)
+1. Download the latest release [Download]([https://github.com/yourusername/AdaptiveFolderEncryption/releases](https://github.com/ayush-badola/Secure-Folder/releases/download/V1.0.0/SecureFolder.exe))
 2. Run `AdaptiveFolderEncryption.exe` (Windows)
 3. No installation required - completely portable!
 
